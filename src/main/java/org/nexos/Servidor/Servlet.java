@@ -1,4 +1,4 @@
-package org.example.pruebanexos.Servidor;
+package org.nexos.Servidor;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

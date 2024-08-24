@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>Servlet</servlet-name>
-        <servlet-class>org.example.pruebanexos.Servidor.Servlet</servlet-class>
+        <servlet-class>org.nexos.Servidor.Servlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
