@@ -1,4 +1,4 @@
-package org.nexos.Servidor;
+package org.nexos.presentation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
