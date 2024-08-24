@@ -12,6 +12,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.0</junit.version>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+        <wildfly.version>26.1.2.Final</wildfly.version>
     </properties>
 
     <dependencies>
@@ -56,6 +59,7 @@
     </dependencies>
 
     <build>
+        <finalName>prueba-nexos</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -64,6 +68,8 @@
                 <configuration>
                     <source>22</source>
                     <target>22</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -85,6 +91,19 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- configurar wildfly -->
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>5.0.0.Final</version>
+                <configuration>
+                    <hostname>localhost</hostname>
+                    <port>9990</port>
+                    <username>nexos</username>
+                    <password>1234</password>
+                </configuration>
             </plugin>
         </plugins>
     </build>
