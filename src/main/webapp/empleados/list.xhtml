@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Empleados</title>
+</h:head>
+<h:body>
+    <h1>Listado de Empleados</h1>
+    <p:commandButton value="Crear Nuevo Empleado" action="form.xhtml?faces-redirect=true" />
+
+    <p:dataTable value="#{empleadoBean.empleados}" var="emp" paginator="true" rows="10" responsive="true">
+        <p:column headerText="Documento Tipo">
+            <h:outputText value="#{emp.documentoTipo}" />
+        </p:column>
+        <p:column headerText="Documento Número">
+            <h:outputText value="#{emp.documentoNumero}" />
+        </p:column>
+        <p:column headerText="Nombres">
+            <h:outputText value="#{emp.nombres}" />
+        </p:column>
+        <p:column headerText="Apellidos">
+            <h:outputText value="#{emp.apellidos}" />
+        </p:column>
+        <p:column headerText="Departamento">
+            <h:outputText value="#{emp.departamento.nombre}" />
+        </p:column>
+        <p:column headerText="Ciudad">
+            <h:outputText value="#{emp.ciudad}" />
+        </p:column>
+        <p:column headerText="Dirección">
+            <h:outputText value="#{emp.direccion}" />
+        </p:column>
+        <p:column headerText="Correo Electrónico">
+            <h:outputText value="#{emp.correoElectronico}" />
+        </p:column>
+        <p:column headerText="Teléfono">
+            <h:outputText value="#{emp.telefono}" />
+        </p:column>
+        <p:column headerText="Fecha Creación">
+            <h:outputText value="#{emp.fechaHoraCrea}" />
+        </p:column>
+        <p:column headerText="Fecha Modificación">
+            <h:outputText value="#{emp.fechaHoraModifica}" />
+        </p:column>
+        <p:column headerText="Acciones">
+            <p:commandButton value="Editar" action="#{empleadoBean.edit(emp.id)}" update="@form" />
+            <p:commandButton value="Eliminar" actionListener="#{empleadoBean.delete(emp.id)}" update="@form" />
+        </p:column>
+    </p:dataTable>
+</h:body>
+</html>

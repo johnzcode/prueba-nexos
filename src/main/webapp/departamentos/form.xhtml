@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Formulario de Departamento</title>
+</h:head>
+<h:body>
+    <h1>Formulario de Departamento</h1>
+    <h:form>
+        <p:panelGrid columns="2" columnClasses="label,value">
+            <!-- ID (solo visual, deshabilitado) -->
+            <h:outputLabel for="id" value="ID:" />
+            <p:outputLabel id="id" value="#{departamentoBean.departamento.id}" rendered="#{not empty departamentoBean.departamento.id}" />
+
+            <!-- Código -->
+            <h:outputLabel for="codigo" value="Código:" />
+            <p:inputText id="codigo" value="#{departamentoBean.departamento.codigo}" required="true" disabled="#{not empty departamentoBean.departamento.id}" />
+
+            <!-- Nombre -->
+            <h:outputLabel for="nombre" value="Nombre:" />
+            <p:inputText id="nombre" value="#{departamentoBean.departamento.nombre}" required="true" />
+
+            <!-- Fecha de Creación (solo visual) -->
+            <h:outputLabel value="Fecha de Creación:" />
+            <h:outputText value="#{departamentoBean.departamento.fechaHoraCrea}" rendered="#{not empty departamentoBean.departamento.fechaHoraCrea}" />
+
+            <!-- Fecha de Modificación (solo visual) -->
+            <h:outputLabel value="Fecha de Modificación:" />
+            <h:outputText value="#{departamentoBean.departamento.fechaHoraModifica}" rendered="#{not empty departamentoBean.departamento.fechaHoraModifica}" />
+        </p:panelGrid>
+
+        <p:commandButton value="Guardar" action="#{departamentoBean.save()}" update="@form" />
+        <p:commandButton value="Cancelar" action="list.xhtml?faces-redirect=true" immediate="true" />
+    </h:form>
+</h:body>
+</html>

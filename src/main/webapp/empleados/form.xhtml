@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Formulario de Empleado</title>
+</h:head>
+<h:body>
+    <h1>Formulario de Empleado</h1>
+    <h:form>
+        <p:panelGrid columns="2" columnClasses="label,value">
+            <!-- ID (solo visual, deshabilitado) -->
+            <h:outputLabel for="id" value="ID:" />
+            <p:outputLabel id="id" value="#{empleadoBean.empleado.id}" rendered="#{not empty empleadoBean.empleado.id}" />
+
+            <!-- Documento Tipo -->
+            <h:outputLabel for="documentoTipo" value="Tipo de Documento:" />
+            <p:selectOneMenu id="documentoTipo" value="#{empleadoBean.empleado.documentoTipo}" required="true">
+                <f:selectItem itemLabel="Seleccione" itemValue="" />
+                <f:selectItem itemLabel="RC" itemValue="RC" />
+                <f:selectItem itemLabel="TI" itemValue="TI" />
+                <f:selectItem itemLabel="CC" itemValue="CC" />
+                <f:selectItem itemLabel="CE" itemValue="CE" />
+            </p:selectOneMenu>
+
+            <!-- Documento Número -->
+            <h:outputLabel for="documentoNumero" value="Número de Documento:" />
+            <p:inputText id="documentoNumero" value="#{empleadoBean.empleado.documentoNumero}" required="true" />
+
+            <!-- Nombres -->
+            <h:outputLabel for="nombres" value="Nombres:" />
+            <p:inputText id="nombres" value="#{empleadoBean.empleado.nombres}" required="true" />
+
+            <!-- Apellidos -->
+            <h:outputLabel for="apellidos" value="Apellidos:" />
+            <p:inputText id="apellidos" value="#{empleadoBean.empleado.apellidos}" required="true" />
+
+            <!-- Departamento -->
+            <h:outputLabel for="departamento" value="Departamento:" />
+            <p:selectOneMenu id="departamento" value="#{empleadoBean.empleado.departamento}" required="true">
+                <f:selectItem itemLabel="Seleccione" itemValue="" />
+                <f:selectItems value="#{empleadoBean.departamentos}" var="dep" itemLabel="#{dep.nombre}" itemValue="#{dep}" />
+            </p:selectOneMenu>
+
+            <!-- Ciudad -->
+            <h:outputLabel for="ciudad" value="Ciudad:" />
+            <p:inputText id="ciudad" value="#{empleadoBean.empleado.ciudad}" />
+
+            <!-- Dirección -->
+            <h:outputLabel for="direccion" value="Dirección:" />
+            <p:inputText id="direccion" value="#{empleadoBean.empleado.direccion}" />
+
+            <!-- Correo Electrónico -->
+            <h:outputLabel for="correoElectronico" value="Correo Electrónico:" />
+            <p:inputText id="correoElectronico" value="#{empleadoBean.empleado.correoElectronico}" />
+
+            <!-- Teléfono -->
+            <h:outputLabel for="telefono" value="Teléfono:" />
+            <p:inputText id="telefono" value="#{empleadoBean.empleado.telefono}" />
+
+            <!-- Fecha de Creación (solo visual) -->
+            <h:outputLabel value="Fecha de Creación:" />
+            <h:outputText value="#{empleadoBean.empleado.fechaHoraCrea}" rendered="#{not empty empleadoBean.empleado.fechaHoraCrea}" />
+
+            <!-- Fecha de Modificación (solo visual) -->
+            <h:outputLabel value="Fecha de Modificación:" />
+            <h:outputText value="#{empleadoBean.empleado.fechaHoraModifica}" rendered="#{not empty empleadoBean.empleado.fechaHoraModifica}" />
+        </p:panelGrid>
+
+        <p:commandButton value="Guardar" action="#{empleadoBean.save}" update="@form" />
+        <p:commandButton value="Cancelar" action="list.xhtml?faces-redirect=true" immediate="true" />
+    </h:form>
+</h:body>
+</html>
